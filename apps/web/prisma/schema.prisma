@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String             @id @default(cuid())
+  email          String             @unique
+  password       String
+  name           String?
+  role           String             @default("CUSTOMER")
+  purchases      Purchase[]
+  reviews        Review[]
+  lessonCompletions LessonCompletion[]
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+}
+
+model Course {
+  id            String    @id @default(cuid())
+  title         String
+  titleZh       String?
+  slug          String    @unique
+  description   String?
+  descriptionZh String?
+  price         Float
+  compareAt     Float?
+  coverImage    String?
+  previewUrl    String?
+  isActive      Boolean   @default(true)
+  chapters      Chapter[]
+  purchases     Purchase[]
+  reviews       Review[]
+  sortOrder     Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Chapter {
+  id        String   @id @default(cuid())
+  title     String
+  titleZh   String?
+  sortOrder Int      @default(0)
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  courseId  String
+  lessons   Lesson[]
+}
+
+model Lesson {
+  id         String             @id @default(cuid())
+  title      String
+  titleZh    String?
+  sortOrder  Int                @default(0)
+  videoKey   String?
+  duration   Int?
+  chapter    Chapter            @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapterId  String
+  completions LessonCompletion[]
+}
+
+model Purchase {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  String
+  amount    Float
+  stripeId  String?  @unique
+  status    String   @default("PENDING")
+  createdAt DateTime @default(now())
+
+  @@unique([userId, courseId])
+}
+
+model LessonCompletion {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  lesson    Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  lessonId  String
+  completed Boolean  @default(false)
+  lastPos   Int      @default(0)
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, lessonId])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  String
+  rating    Int
+  content   String?
+  createdAt DateTime @default(now())
+
+  @@unique([userId, courseId])
+}
+
+model Coupon {
+  id        String    @id @default(cuid())
+  code      String    @unique
+  type      String
+  value     Float
+  maxUses   Int?
+  usedCount Int       @default(0)
+  expiresAt DateTime?
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+}
+
+model StoreSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
