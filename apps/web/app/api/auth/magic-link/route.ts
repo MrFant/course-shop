@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     });
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.ziiy.fun";
-    const verifyUrl = `${appUrl}/auth/verify?token=${token}`;
+    const verifyUrl = `${appUrl}/api/auth/verify?token=${token}`;
 
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json({ error: "Email service not configured" }, { status: 503 });
