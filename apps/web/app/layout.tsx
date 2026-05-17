@@ -12,9 +12,48 @@ const inter = Inter({ subsets: ["latin"] });
 const allMessages: Record<string, object> = { en, zh };
 
 export const metadata: Metadata = {
-  title: "Learn Chinese Pinyin & Typing | 学习中文拼音与打字",
+  title: {
+    default: "Learn Chinese Pinyin & Typing | Online Course for Beginners",
+    template: "%s | CourseShop",
+  },
   description:
-    "Master Mandarin pronunciation and Chinese input methods with step-by-step video lessons. Perfect for beginners worldwide.",
+    "Master Mandarin pronunciation and Chinese input methods with 30+ step-by-step video lessons. Perfect for beginners worldwide. Lifetime access, learn at your own pace.",
+  keywords: [
+    "learn chinese",
+    "chinese pinyin",
+    "mandarin pronunciation",
+    "chinese typing",
+    "chinese input method",
+    "learn mandarin",
+    "pinyin course",
+    "chinese for beginners",
+  ],
+  openGraph: {
+    title: "Learn Chinese Pinyin & Typing | CourseShop",
+    description:
+      "Master Mandarin pronunciation and Chinese input methods with 30+ step-by-step video lessons. Perfect for beginners worldwide.",
+    url: "https://www.ziiy.fun",
+    siteName: "CourseShop",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Learn Chinese Pinyin & Typing | CourseShop",
+    description:
+      "Master Mandarin pronunciation and Chinese input methods with 30+ step-by-step video lessons.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    canonical: "https://www.ziiy.fun",
+  },
 };
 
 export default async function RootLayout({
@@ -26,7 +65,7 @@ export default async function RootLayout({
   const messages = allMessages[locale] || allMessages.en;
 
   return (
-    <html lang={locale}>
+    <html lang="en">
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-E7THQTVJ6V"
