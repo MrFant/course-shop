@@ -15,28 +15,6 @@ const handler = NextAuth({
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
-  callbacks: {
-    async signIn({ user, account }) {
-      if (account?.provider === "google") {
-        const { db } = await import("@/lib/db");
-        const email = user.email;
-        if (!email) return false;
-
-        let dbUser = await db.user.findUnique({ where: { email } });
-        if (!dbUser) {
-          dbUser = await db.user.create({
-            data: {
-              email,
-              name: user.name || null,
-              role: "CUSTOMER",
-            },
-          });
-        }
-        return true;
-      }
-      return false;
-    },
-  },
 });
 
 export { handler as GET, handler as POST };
