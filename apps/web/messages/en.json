@@ -1,0 +1,110 @@
+{
+  "common": {
+    "login": "Login",
+    "register": "Sign Up",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "back": "Back",
+    "next": "Next",
+    "price": "Price",
+    "free": "Free",
+    "myCourses": "My Courses",
+    "admin": "Admin",
+    "home": "Home"
+  },
+  "nav": {
+    "courses": "Courses",
+    "login": "Login",
+    "register": "Sign Up",
+    "myCourses": "My Courses",
+    "admin": "Admin",
+    "logout": "Logout"
+  },
+  "hero": {
+    "badge": "Online Course",
+    "title": "Learn Chinese Pinyin & Typing",
+    "subtitle": "Master Mandarin pronunciation and Chinese input methods with step-by-step video lessons. Perfect for beginners worldwide.",
+    "cta": "Start Learning",
+    "ctaSecondary": "View Curriculum"
+  },
+  "features": {
+    "title": "Why Learn With Us?",
+    "structured": {
+      "title": "Structured Curriculum",
+      "desc": "10 chapters, 30 video lessons from basics to advanced typing"
+    },
+    "practice": {
+      "title": "Hands-On Practice",
+      "desc": "Practice pinyin tones and typing with real-world exercises"
+    },
+    "access": {
+      "title": "Lifetime Access",
+      "desc": "Learn at your own pace with unlimited replays forever"
+    },
+    "bilingual": {
+      "title": "Bilingual Support",
+      "desc": "Available in English and Chinese for easier understanding"
+    }
+  },
+  "curriculum": {
+    "title": "Course Curriculum",
+    "lessons": "lessons",
+    "locked": "Purchase to unlock"
+  },
+  "pricing": {
+    "title": "Start Learning Today",
+    "oneTime": "One-time payment",
+    "lifetime": "Lifetime access to all 30 lessons",
+    "guarantee": "30-day money-back guarantee",
+    "buyNow": "Buy Now",
+    "purchased": "Start Learning"
+  },
+  "auth": {
+    "loginTitle": "Welcome Back",
+    "subtitle": "Sign in to start learning",
+    "loginBtn": "Sign In with Email",
+    "noAccountHint": "New here? Your account is created automatically.",
+    "magicLinkSent": "Check your email",
+    "magicLinkDesc": "We sent a sign-in link to",
+    "useDifferentEmail": "Use a different email",
+    "sendMagicLink": "Send Magic Link",
+    "continueWithGoogle": "Continue with Google",
+    "loginError": "Invalid email or password",
+    "registerError": "Registration failed",
+    "emailExists": "Email already registered"
+  },
+  "player": {
+    "backToCourses": "Back to My Courses",
+    "completed": "Completed",
+    "currentLesson": "Current Lesson",
+    "markComplete": "Mark as Complete"
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "courses": "Courses",
+    "orders": "Orders",
+    "settings": "Settings",
+    "courseEdit": "Edit Course",
+    "addChapter": "Add Chapter",
+    "addLesson": "Add Lesson",
+    "uploadVideo": "Upload Video",
+    "totalRevenue": "Total Revenue",
+    "totalOrders": "Total Orders",
+    "totalStudents": "Total Students"
+  },
+  "footer": {
+    "about": "About",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "copyright": "© 2026 CourseShop. All rights reserved."
+  }
+}

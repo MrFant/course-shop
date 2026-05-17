@@ -1,0 +1,110 @@
+{
+  "common": {
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出",
+    "email": "邮箱",
+    "password": "密码",
+    "name": "姓名",
+    "submit": "提交",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "loading": "加载中...",
+    "back": "返回",
+    "next": "下一步",
+    "price": "价格",
+    "free": "免费",
+    "myCourses": "我的课程",
+    "admin": "管理后台",
+    "home": "首页"
+  },
+  "nav": {
+    "courses": "课程",
+    "login": "登录",
+    "register": "注册",
+    "myCourses": "我的课程",
+    "admin": "管理后台",
+    "logout": "退出"
+  },
+  "hero": {
+    "badge": "在线课程",
+    "title": "学习中文拼音与打字",
+    "subtitle": "通过循序渐进的视频课程，掌握普通话发音和中文输入法。适合全球零基础学习者。",
+    "cta": "开始学习",
+    "ctaSecondary": "查看课程大纲"
+  },
+  "features": {
+    "title": "为什么选择我们？",
+    "structured": {
+      "title": "系统化课程",
+      "desc": "10个章节，30节视频课，从基础到进阶打字"
+    },
+    "practice": {
+      "title": "实战练习",
+      "desc": "通过真实场景练习拼音声调和中文打字"
+    },
+    "access": {
+      "title": "终身访问",
+      "desc": "按自己的节奏学习，无限次回放"
+    },
+    "bilingual": {
+      "title": "中英双语",
+      "desc": "支持中英文界面，降低学习门槛"
+    }
+  },
+  "curriculum": {
+    "title": "课程大纲",
+    "lessons": "节课",
+    "locked": "购买后解锁"
+  },
+  "pricing": {
+    "title": "今天就开始学习",
+    "oneTime": "一次付费",
+    "lifetime": "终身访问全部30节课",
+    "guarantee": "30天无理由退款保障",
+    "buyNow": "立即购买",
+    "purchased": "开始学习"
+  },
+  "auth": {
+    "loginTitle": "欢迎回来",
+    "subtitle": "登录以开始学习",
+    "loginBtn": "邮箱登录",
+    "noAccountHint": "新用户？账号会自动创建",
+    "magicLinkSent": "请检查邮箱",
+    "magicLinkDesc": "我们已向以下邮箱发送了登录链接",
+    "useDifferentEmail": "使用其他邮箱",
+    "sendMagicLink": "发送 Magic Link",
+    "continueWithGoogle": "使用 Google 登录",
+    "loginError": "邮箱或密码错误",
+    "registerError": "注册失败",
+    "emailExists": "邮箱已被注册"
+  },
+  "player": {
+    "backToCourses": "返回我的课程",
+    "completed": "已完成",
+    "currentLesson": "当前课程",
+    "markComplete": "标记完成"
+  },
+  "admin": {
+    "title": "管理后台",
+    "courses": "课程管理",
+    "orders": "订单管理",
+    "settings": "系统设置",
+    "courseEdit": "编辑课程",
+    "addChapter": "添加章节",
+    "addLesson": "添加课时",
+    "uploadVideo": "上传视频",
+    "totalRevenue": "总收入",
+    "totalOrders": "总订单",
+    "totalStudents": "总学员"
+  },
+  "footer": {
+    "about": "关于我们",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "contact": "联系我们",
+    "copyright": "© 2026 CourseShop. 保留所有权利。"
+  }
+}
