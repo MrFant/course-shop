@@ -81,7 +81,7 @@ function LoginForm() {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = `/api/auth/signin/google?callbackUrl=${encodeURIComponent(redirect)}`;
+    window.location.href = `/api/auth/google?redirect=${encodeURIComponent(redirect)}`;
   };
 
   if (magicLinkSent) {
