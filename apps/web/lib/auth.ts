@@ -1,6 +1,7 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { db } from "./db";
+import { decode } from "next-auth/jwt";
 
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET!);
 const COOKIE_NAME = "course-shop-token";
@@ -24,18 +25,42 @@ export async function verifyToken(token: string) {
 
 export async function getCurrentUser() {
   const cookieStore = await cookies();
+
+  // Check our custom JWT cookie first
   const token = cookieStore.get(COOKIE_NAME)?.value;
-  if (!token) return null;
+  if (token) {
+    const payload = await verifyToken(token);
+    if (payload) {
+      const user = await db.user.findUnique({
+        where: { id: payload.userId },
+        select: { id: true, email: true, name: true, role: true },
+      });
+      if (user) return user;
+    }
+  }
 
-  const payload = await verifyToken(token);
-  if (!payload) return null;
+  // Check NextAuth session cookie
+  const nextAuthToken = cookieStore.get("next-auth.session-token")?.value
+    || cookieStore.get("__Secure-next-auth.session-token")?.value;
+  if (nextAuthToken) {
+    try {
+      const decoded = await decode({
+        token: nextAuthToken,
+        secret: process.env.NEXTAUTH_SECRET!,
+      });
+      if (decoded?.email) {
+        const user = await db.user.findUnique({
+          where: { email: decoded.email as string },
+          select: { id: true, email: true, name: true, role: true },
+        });
+        if (user) return user;
+      }
+    } catch {
+      // Invalid NextAuth token
+    }
+  }
 
-  const user = await db.user.findUnique({
-    where: { id: payload.userId },
-    select: { id: true, email: true, name: true, role: true },
-  });
-
-  return user;
+  return null;
 }
 
 export async function requireAuth() {
