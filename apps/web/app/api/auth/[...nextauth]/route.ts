@@ -36,9 +36,6 @@ const handler = NextAuth({
 
       return `/auth/callback?token=${token}`;
     },
-    async redirect({ url, baseUrl }) {
-      return url.startsWith(baseUrl) ? url : baseUrl;
-    },
   },
   pages: {
     signIn: "/auth/login",
@@ -47,7 +44,6 @@ const handler = NextAuth({
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
-  debug: process.env.NODE_ENV === "development",
 });
 
 export { handler as GET, handler as POST };
