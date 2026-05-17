@@ -13,7 +13,6 @@ function LoginForm() {
   const errorParam = searchParams.get("error");
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [magicLinkSent, setMagicLinkSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(
@@ -23,33 +22,6 @@ function LoginForm() {
       ? "Invalid link. Please try again."
       : ""
   );
-
-  const handlePasswordLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || t("auth.loginError"));
-        return;
-      }
-
-      router.push(redirect);
-      router.refresh();
-    } catch {
-      setError(t("auth.loginError"));
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleMagicLink = async () => {
     if (!email) {
@@ -163,30 +135,6 @@ function LoginForm() {
               {loading ? t("common.loading") : "Send Magic Link"}
             </button>
           </div>
-
-          <div className="flex items-center gap-4 my-6">
-            <div className="flex-1 border-t border-gray-200" />
-            <span className="text-sm text-gray-400">or</span>
-            <div className="flex-1 border-t border-gray-200" />
-          </div>
-
-          <form onSubmit={handlePasswordLogin} className="space-y-3">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder={t("common.password")}
-              minLength={8}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary w-full"
-            >
-              {loading ? t("common.loading") : t("auth.loginBtn")}
-            </button>
-          </form>
 
           <p className="mt-6 text-center text-sm text-gray-500">
             {t("auth.noAccountHint")}
