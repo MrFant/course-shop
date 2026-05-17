@@ -11,7 +11,11 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account, error }) {
+      if (error) {
+        console.error("NextAuth signIn error:", error);
+        return false;
+      }
       if (account?.provider !== "google") return false;
 
       const email = user.email;
@@ -36,6 +40,9 @@ const handler = NextAuth({
 
       return `/auth/callback?token=${token}`;
     },
+    async redirect({ url, baseUrl }) {
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    },
   },
   pages: {
     signIn: "/auth/login",
@@ -44,6 +51,7 @@ const handler = NextAuth({
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  debug: true,
 });
 
 export { handler as GET, handler as POST };
